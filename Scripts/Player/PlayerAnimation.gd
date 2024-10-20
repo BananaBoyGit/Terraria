@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+class_name CharacterAnimation
+
 @export var _character: CharacterBody2D
 
 @export_group("Animations name")
@@ -34,8 +36,10 @@ func PlayPrioretyAnimation(animationName: String, priorety: int):
 func FlipSpriteAtVelocityX(velocityX: float) -> void:
 	if velocityX < 0.0:
 		flip_h = true
-	else: 
+	elif velocityX > 0.0: 
 		flip_h = false
 
 func _OnPrioretyAnimationFinished() -> void:
+	animation_finished.disconnect(_OnPrioretyAnimationFinished)
 	animationPriorety = 0
+

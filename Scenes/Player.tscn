@@ -1,14 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://dsd7xpwd8fka1"]
+[gd_scene load_steps=44 format=3 uid="uid://dsd7xpwd8fka1"]
 
 [ext_resource type="Texture2D" uid="uid://daqydhaivx4yq" path="res://Assets/Arts/Knight_anin.png" id="1_4jmsw"]
-[ext_resource type="Script" path="res://Scripts/Patterns/FSM/FSM.gd" id="1_ixqi6"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/MoveKeeper.gd" id="2_fdsjw"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/MovementAnimation.gd" id="2_feaqv"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/MoveState.gd" id="3_0b35t"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/IdleState.gd" id="4_hmbs5"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/JumpState.gd" id="5_2h2l6"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/FallState.gd" id="6_o65sd"]
-[ext_resource type="Script" path="res://Scripts/MovementStates/MovementGeneralChanger.gd" id="7_5absm"]
+[ext_resource type="Script" path="res://Scripts/Player/Movement.gd" id="2_36uun"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.gd" id="2_fq6ol"]
+[ext_resource type="Script" path="res://Scripts/HP/Hp.gd" id="4_kue8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch4c6"]
 size = Vector2(7, 14)
@@ -316,46 +311,14 @@ shape = SubResource("RectangleShape2D_ch4c6")
 sprite_frames = SubResource("SpriteFrames_5jlwd")
 animation = &"Move"
 autoplay = "Idle"
-script = ExtResource("2_feaqv")
+script = ExtResource("2_fq6ol")
 _character = NodePath("..")
 
-[node name="MovementFSM" type="Node" parent="." node_paths=PackedStringArray("_initialState")]
-script = ExtResource("1_ixqi6")
-_initialState = NodePath("MoveState")
+[node name="Movement" type="Node2D" parent="." node_paths=PackedStringArray("_player")]
+script = ExtResource("2_36uun")
+_player = NodePath("..")
+speed = 100.0
+jumpVelocity = -325.0
 
-[node name="StateKeeper" type="Node" parent="MovementFSM" node_paths=PackedStringArray("moveState", "idleState", "jumpState", "fallState")]
-script = ExtResource("2_fdsjw")
-moveState = NodePath("../MoveState")
-idleState = NodePath("../IdleState")
-jumpState = NodePath("../JumpState")
-fallState = NodePath("../FallState")
-
-[node name="MoveState" type="Node" parent="MovementFSM" node_paths=PackedStringArray("_generalStateChanger", "_stateKeeper", "_character")]
-script = ExtResource("3_0b35t")
-_generalStateChanger = NodePath("../GeneralStateChanger")
-speed = 200.0
-_stateKeeper = NodePath("../StateKeeper")
-_character = NodePath("../..")
-
-[node name="IdleState" type="Node" parent="MovementFSM" node_paths=PackedStringArray("_generalStateChanger", "_stateKeeper", "_character")]
-script = ExtResource("4_hmbs5")
-_generalStateChanger = NodePath("../GeneralStateChanger")
-_stateKeeper = NodePath("../StateKeeper")
-_character = NodePath("../..")
-
-[node name="JumpState" type="Node" parent="MovementFSM" node_paths=PackedStringArray("_generalStateChanger", "_stateKeeper", "_character")]
-script = ExtResource("5_2h2l6")
-_generalStateChanger = NodePath("../GeneralStateChanger")
-_stateKeeper = NodePath("../StateKeeper")
-_character = NodePath("../..")
-
-[node name="FallState" type="Node" parent="MovementFSM" node_paths=PackedStringArray("_stateKeeper", "_character")]
-script = ExtResource("6_o65sd")
-_stateKeeper = NodePath("../StateKeeper")
-_character = NodePath("../..")
-
-[node name="GeneralStateChanger" type="Node" parent="MovementFSM" node_paths=PackedStringArray("_character", "_FSM", "_stateKeeper")]
-script = ExtResource("7_5absm")
-_character = NodePath("../..")
-_FSM = NodePath("..")
-_stateKeeper = NodePath("../StateKeeper")
+[node name="Hp" type="Node" parent="."]
+script = ExtResource("4_kue8r")
