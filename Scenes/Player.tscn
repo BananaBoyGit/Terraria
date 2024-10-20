@@ -1,8 +1,8 @@
 [gd_scene load_steps=44 format=3 uid="uid://dsd7xpwd8fka1"]
 
 [ext_resource type="Texture2D" uid="uid://daqydhaivx4yq" path="res://Assets/Arts/Knight_anin.png" id="1_4jmsw"]
-[ext_resource type="Script" path="res://Scripts/Player/Movement.gd" id="2_36uun"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.gd" id="2_fq6ol"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="3_ranip"]
 [ext_resource type="Script" path="res://Scripts/HP/Hp.gd" id="4_kue8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch4c6"]
@@ -300,7 +300,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Stealable"]]
 position = Vector2(150, 413)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -309,16 +309,16 @@ shape = SubResource("RectangleShape2D_ch4c6")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("_character")]
 sprite_frames = SubResource("SpriteFrames_5jlwd")
-animation = &"Move"
+animation = &"Damaged"
 autoplay = "Idle"
 script = ExtResource("2_fq6ol")
 _character = NodePath("..")
 
 [node name="Movement" type="Node2D" parent="." node_paths=PackedStringArray("_player")]
-script = ExtResource("2_36uun")
+script = ExtResource("3_ranip")
+jumpVelocity = -300.0
 _player = NodePath("..")
-speed = 100.0
-jumpVelocity = -325.0
+speed = 75.0
 
 [node name="Hp" type="Node" parent="."]
 script = ExtResource("4_kue8r")

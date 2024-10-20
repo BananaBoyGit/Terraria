@@ -1,28 +1,66 @@
 [gd_scene load_steps=4 format=3 uid="uid://ljan3lyseou5"]
 
 [ext_resource type="PackedScene" uid="uid://dsd7xpwd8fka1" path="res://Scenes/Player.tscn" id="1_ku24b"]
+[ext_resource type="PackedScene" uid="uid://da5seo5y4qnsg" path="res://Scenes/ThiefEnemy.tscn" id="2_hjqj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e15bi"]
-size = Vector2(1142, 36)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrgu"]
+size = Vector2(2110, 36)
 
 [node name="World" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -978.0
+offset_top = 436.0
+offset_right = 1132.0
+offset_bottom = 472.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 365.0
+offset_top = 375.0
+offset_right = 405.0
+offset_bottom = 415.0
+color = Color(0.231373, 1, 0.2, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 622.0
+offset_top = 377.0
+offset_right = 662.0
+offset_bottom = 417.0
+color = Color(0.231373, 1, 0.2, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 545.0
+offset_top = 378.0
+offset_right = 585.0
+offset_bottom = 418.0
+color = Color(0.231373, 1, 0.2, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = 463.0
+offset_top = 376.0
+offset_right = 503.0
+offset_bottom = 416.0
+color = Color(0.231373, 1, 0.2, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+offset_left = 215.0
+offset_top = 377.0
+offset_right = 255.0
+offset_bottom = 417.0
+color = Color(0.231373, 1, 0.2, 1)
+
 [node name="Player" parent="." instance=ExtResource("1_ku24b")]
 
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(280, 324)
+[node name="Camera" type="Camera2D" parent="Player"]
+position = Vector2(130, -89)
 zoom = Vector2(2.054, 2.054)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 446)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(561, 8)
+position = Vector2(77, 8)
 shape = SubResource("RectangleShape2D_e15bi")
 
-[node name="ThiefEnemy" type="CharacterBody2D" parent="."]
-
-[node name="Collision" type="CollisionShape2D" parent="ThiefEnemy"]
-shape = SubResource("RectangleShape2D_vnrgu")
+[node name="ThiefEnemy" parent="." instance=ExtResource("2_hjqj7")]
+position = Vector2(341, 420)

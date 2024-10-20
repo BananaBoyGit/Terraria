@@ -7,8 +7,11 @@ class_name AbstractAttack
 
 var is_reload: bool
 
+signal Attacked
+
 func Attack(hp: Hp) -> float:
 	hp.ApplyDamage(damage)
+	Attacked.emit()
 	Reload()
 	return damage
 
