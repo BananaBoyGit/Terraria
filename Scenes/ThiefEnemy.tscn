@@ -147,8 +147,9 @@ shape = SubResource("RectangleShape2D_vnrgu")
 
 [node name="CharacterAnimation" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("_character")]
 sprite_frames = SubResource("SpriteFrames_owujx")
-animation = &"Move"
-frame_progress = 0.257759
+animation = &"Idle"
+frame = 2
+frame_progress = 0.559335
 script = ExtResource("1_mp71q")
 _character = NodePath("..")
 
