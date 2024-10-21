@@ -159,6 +159,7 @@ speed = 50.0
 
 [node name="AbstractAttack" type="Node" parent="."]
 script = ExtResource("4_8bq58")
+damage = 5.0
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("4_i7b3e")

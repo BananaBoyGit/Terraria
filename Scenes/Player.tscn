@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://dsd7xpwd8fka1"]
+[gd_scene load_steps=45 format=3 uid="uid://dsd7xpwd8fka1"]
 
 [ext_resource type="Texture2D" uid="uid://daqydhaivx4yq" path="res://Assets/Arts/Knight_anin.png" id="1_4jmsw"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.gd" id="2_fq6ol"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="3_ranip"]
 [ext_resource type="Script" path="res://Scripts/HP/Hp.gd" id="4_kue8r"]
+[ext_resource type="Script" path="res://Scripts/Attack/AbstractAttack.gd" id="5_f3saf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch4c6"]
 size = Vector2(7, 14)
@@ -322,3 +323,6 @@ speed = 75.0
 
 [node name="Hp" type="Node" parent="."]
 script = ExtResource("4_kue8r")
+
+[node name="AbstractAttack" type="Node" parent="."]
+script = ExtResource("5_f3saf")
